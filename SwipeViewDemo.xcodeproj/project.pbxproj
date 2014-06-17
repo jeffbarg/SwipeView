@@ -10,6 +10,16 @@
 		328B664D1950F57500D11E0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B664C1950F57500D11E0E /* AppDelegate.swift */; };
 		328B664F1950F57500D11E0E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 328B664E1950F57500D11E0E /* Images.xcassets */; };
 		328B665B1950F57500D11E0E /* SwipeViewDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B665A1950F57500D11E0E /* SwipeViewDemoTests.swift */; };
+		328B666C1950F59A00D11E0E /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B66651950F59A00D11E0E /* SwipeView.swift */; };
+		328B666D1950F59A00D11E0E /* SwipeOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B66661950F59A00D11E0E /* SwipeOptions.swift */; };
+		328B666E1950F59A00D11E0E /* PanState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B66671950F59A00D11E0E /* PanState.swift */; };
+		328B666F1950F59A00D11E0E /* SwipeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B66681950F59A00D11E0E /* SwipeResult.swift */; };
+		328B66701950F59A00D11E0E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B66691950F59A00D11E0E /* Extensions.swift */; };
+		328B66711950F59A00D11E0E /* SwipeViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B666A1950F59A00D11E0E /* SwipeViewState.swift */; };
+		328B66721950F59A00D11E0E /* SwipeViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B666B1950F59A00D11E0E /* SwipeViewDelegate.swift */; };
+		328B66741950F5A900D11E0E /* SwipeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B66731950F5A900D11E0E /* SwipeImageView.swift */; };
+		328B66761950F5AE00D11E0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B66751950F5AE00D11E0E /* ViewController.swift */; };
+		328B66781950F61400D11E0E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B66771950F61400D11E0E /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +40,16 @@
 		328B66541950F57500D11E0E /* SwipeViewDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwipeViewDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		328B66591950F57500D11E0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		328B665A1950F57500D11E0E /* SwipeViewDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewDemoTests.swift; sourceTree = "<group>"; };
+		328B66651950F59A00D11E0E /* SwipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
+		328B66661950F59A00D11E0E /* SwipeOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeOptions.swift; sourceTree = "<group>"; };
+		328B66671950F59A00D11E0E /* PanState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanState.swift; sourceTree = "<group>"; };
+		328B66681950F59A00D11E0E /* SwipeResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeResult.swift; sourceTree = "<group>"; };
+		328B66691950F59A00D11E0E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		328B666A1950F59A00D11E0E /* SwipeViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeViewState.swift; sourceTree = "<group>"; };
+		328B666B1950F59A00D11E0E /* SwipeViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeViewDelegate.swift; sourceTree = "<group>"; };
+		328B66731950F5A900D11E0E /* SwipeImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeImageView.swift; sourceTree = "<group>"; };
+		328B66751950F5AE00D11E0E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		328B66771950F61400D11E0E /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +91,10 @@
 		328B66491950F57500D11E0E /* SwipeViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				328B66641950F57F00D11E0E /* SwipeView */,
+				328B66731950F5A900D11E0E /* SwipeImageView.swift */,
+				328B66771950F61400D11E0E /* Person.swift */,
+				328B66751950F5AE00D11E0E /* ViewController.swift */,
 				328B664C1950F57500D11E0E /* AppDelegate.swift */,
 				328B664E1950F57500D11E0E /* Images.xcassets */,
 				328B664A1950F57500D11E0E /* Supporting Files */,
@@ -101,6 +125,20 @@
 				328B66591950F57500D11E0E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		328B66641950F57F00D11E0E /* SwipeView */ = {
+			isa = PBXGroup;
+			children = (
+				328B66651950F59A00D11E0E /* SwipeView.swift */,
+				328B66661950F59A00D11E0E /* SwipeOptions.swift */,
+				328B66671950F59A00D11E0E /* PanState.swift */,
+				328B66681950F59A00D11E0E /* SwipeResult.swift */,
+				328B66691950F59A00D11E0E /* Extensions.swift */,
+				328B666A1950F59A00D11E0E /* SwipeViewState.swift */,
+				328B666B1950F59A00D11E0E /* SwipeViewDelegate.swift */,
+			);
+			name = SwipeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,7 +238,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				328B66761950F5AE00D11E0E /* ViewController.swift in Sources */,
+				328B66721950F59A00D11E0E /* SwipeViewDelegate.swift in Sources */,
+				328B666D1950F59A00D11E0E /* SwipeOptions.swift in Sources */,
+				328B66701950F59A00D11E0E /* Extensions.swift in Sources */,
+				328B66781950F61400D11E0E /* Person.swift in Sources */,
+				328B66711950F59A00D11E0E /* SwipeViewState.swift in Sources */,
+				328B66741950F5A900D11E0E /* SwipeImageView.swift in Sources */,
+				328B666F1950F59A00D11E0E /* SwipeResult.swift in Sources */,
+				328B666E1950F59A00D11E0E /* PanState.swift in Sources */,
 				328B664D1950F57500D11E0E /* AppDelegate.swift in Sources */,
+				328B666C1950F59A00D11E0E /* SwipeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
