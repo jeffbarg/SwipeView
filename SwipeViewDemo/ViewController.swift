@@ -7,13 +7,34 @@
 //
 
 import UIKit
+import MapKit
 
 class ViewController: UIViewController {
-
-    var frontCardView : SwipeImageView?
-    var backCardView : SwipeImageView?
+    
+    let locationManager = CLLocationManager()
+    var mapView : MKMapView?
     
     var people : Person[] = [
+        Person(name: "Finn", image: UIImage(named: "finn")),
+        Person(name: "Jake", image: UIImage(named: "jake")),
+        Person(name: "Fiona", image: UIImage(named: "fiona")),
+        Person(name: "Prince", image: UIImage(named: "prince")),
+        Person(name: "Finn", image: UIImage(named: "finn")),
+        Person(name: "Jake", image: UIImage(named: "jake")),
+        Person(name: "Fiona", image: UIImage(named: "fiona")),
+        Person(name: "Prince", image: UIImage(named: "prince")),
+        Person(name: "Finn", image: UIImage(named: "finn")),
+        Person(name: "Jake", image: UIImage(named: "jake")),
+        Person(name: "Fiona", image: UIImage(named: "fiona")),
+        Person(name: "Prince", image: UIImage(named: "prince")),
+        Person(name: "Finn", image: UIImage(named: "finn")),
+        Person(name: "Jake", image: UIImage(named: "jake")),
+        Person(name: "Fiona", image: UIImage(named: "fiona")),
+        Person(name: "Prince", image: UIImage(named: "prince")),
+        Person(name: "Finn", image: UIImage(named: "finn")),
+        Person(name: "Jake", image: UIImage(named: "jake")),
+        Person(name: "Fiona", image: UIImage(named: "fiona")),
+        Person(name: "Prince", image: UIImage(named: "prince")),
         Person(name: "Finn", image: UIImage(named: "finn")),
         Person(name: "Jake", image: UIImage(named: "jake")),
         Person(name: "Fiona", image: UIImage(named: "fiona")),
@@ -30,36 +51,55 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         
-        frontCardView = self.popCardViewWithFrame(self.frontCardViewFrame())
-        self.view.addSubview(frontCardView)
+        let pileView = PileView(frame: self.frontCardViewFrame())
+        pileView.popCardViewWithFrame = self.popCardViewWithFrame
         
-        backCardView = self.popCardViewWithFrame(self.backCardViewFrame())
-        self.view.insertSubview(backCardView, belowSubview: frontCardView)
+        pileView.reloadContent()
+        
+        self.view.addSubview(pileView)
+        
+        self.view.backgroundColor = UIColor.darkGrayColor()
     }
     
-    override func viewDidAppear(animated: Bool)  {
-    }
-    
-    func popCardViewWithFrame(frame : CGRect) -> SwipeImageView? {
+    func popCardViewWithFrame(frame : CGRect) -> UIView? {
+        if (people.count == 0) {
+            return nil
+        }
+        
         let p : Person = people.removeLast()
-        return SwipeImageView(frame: frame, image: p.image)
+        
+        var imageView = UIImageView()
+        
+        imageView.image = p.image
+        imageView.contentMode = UIViewContentMode.ScaleAspectFill
+        imageView.clipsToBounds = true
+            
+        return imageView
+    }
+    
+    func tappedImageView(sender : AnyObject) -> () {
+        if let imageView = sender as? UIView {
+            UIView.animateWithDuration(0.5, animations: {
+                imageView.alpha = 0
+                imageView.transform = CGAffineTransformMakeScale(0.01, 0.01)
+            })
+        }
     }
     
     func frontCardViewFrame () -> CGRect {
-        let horizontalPadding : CGFloat = 20
-        let topPadding : CGFloat = 60
-        let bottomPadding : CGFloat = 200
-
+        let horizontalPadding : CGFloat = 15
+        let topPadding : CGFloat = 260
+        let bottomPadding : CGFloat = -20
+        
         return CGRectMake(horizontalPadding,
             topPadding,
             CGRectGetWidth(self.view.frame) - (horizontalPadding * 2),
-            CGRectGetHeight(self.view.frame) - (bottomPadding))
+            CGRectGetHeight(self.view.frame) - (bottomPadding) - (topPadding))
     }
     
-    func backCardViewFrame () -> CGRect {
-        let frontFrame : CGRect = self.frontCardViewFrame()
-        return CGRectOffset(frontFrame, 0, 10)
+    override func viewDidAppear(animated: Bool)  {
     }
     
     override func didReceiveMemoryWarning() {

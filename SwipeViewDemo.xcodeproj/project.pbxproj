@@ -17,9 +17,9 @@
 		328B66701950F59A00D11E0E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B66691950F59A00D11E0E /* Extensions.swift */; };
 		328B66711950F59A00D11E0E /* SwipeViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B666A1950F59A00D11E0E /* SwipeViewState.swift */; };
 		328B66721950F59A00D11E0E /* SwipeViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B666B1950F59A00D11E0E /* SwipeViewDelegate.swift */; };
-		328B66741950F5A900D11E0E /* SwipeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B66731950F5A900D11E0E /* SwipeImageView.swift */; };
 		328B66761950F5AE00D11E0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B66751950F5AE00D11E0E /* ViewController.swift */; };
 		328B66781950F61400D11E0E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B66771950F61400D11E0E /* Person.swift */; };
+		328B667A1951046C00D11E0E /* PileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B66791951046C00D11E0E /* PileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,9 +47,9 @@
 		328B66691950F59A00D11E0E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		328B666A1950F59A00D11E0E /* SwipeViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeViewState.swift; sourceTree = "<group>"; };
 		328B666B1950F59A00D11E0E /* SwipeViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeViewDelegate.swift; sourceTree = "<group>"; };
-		328B66731950F5A900D11E0E /* SwipeImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeImageView.swift; sourceTree = "<group>"; };
 		328B66751950F5AE00D11E0E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		328B66771950F61400D11E0E /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		328B66791951046C00D11E0E /* PileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				328B66641950F57F00D11E0E /* SwipeView */,
-				328B66731950F5A900D11E0E /* SwipeImageView.swift */,
 				328B66771950F61400D11E0E /* Person.swift */,
 				328B66751950F5AE00D11E0E /* ViewController.swift */,
 				328B664C1950F57500D11E0E /* AppDelegate.swift */,
@@ -137,6 +136,7 @@
 				328B66691950F59A00D11E0E /* Extensions.swift */,
 				328B666A1950F59A00D11E0E /* SwipeViewState.swift */,
 				328B666B1950F59A00D11E0E /* SwipeViewDelegate.swift */,
+				328B66791951046C00D11E0E /* PileView.swift */,
 			);
 			name = SwipeView;
 			sourceTree = "<group>";
@@ -240,11 +240,11 @@
 			files = (
 				328B66761950F5AE00D11E0E /* ViewController.swift in Sources */,
 				328B66721950F59A00D11E0E /* SwipeViewDelegate.swift in Sources */,
+				328B667A1951046C00D11E0E /* PileView.swift in Sources */,
 				328B666D1950F59A00D11E0E /* SwipeOptions.swift in Sources */,
 				328B66701950F59A00D11E0E /* Extensions.swift in Sources */,
 				328B66781950F61400D11E0E /* Person.swift in Sources */,
 				328B66711950F59A00D11E0E /* SwipeViewState.swift in Sources */,
-				328B66741950F5A900D11E0E /* SwipeImageView.swift in Sources */,
 				328B666F1950F59A00D11E0E /* SwipeResult.swift in Sources */,
 				328B666E1950F59A00D11E0E /* PanState.swift in Sources */,
 				328B664D1950F57500D11E0E /* AppDelegate.swift in Sources */,
@@ -425,6 +425,7 @@
 				328B66601950F57500D11E0E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		328B66611950F57500D11E0E /* Build configuration list for PBXNativeTarget "SwipeViewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -433,6 +434,7 @@
 				328B66631950F57500D11E0E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

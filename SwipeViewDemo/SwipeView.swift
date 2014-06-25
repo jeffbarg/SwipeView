@@ -10,19 +10,23 @@ import UIKit
 
 class SwipeView: UIView {
     
-    var options : SwipeOptions = SwipeOptions()
+    var options : SwipeOptions
     var viewState : SwipeViewState = SwipeViewState()
+    
+    var contentView : UIView
     
     //Delegate Functions
     var viewDidCancelSwipe : ((UIView) -> ())?
     var viewWasChosenWithDirection : ((UIView, SwipeDirection) -> ())?
     
-    init(frame: CGRect, options : SwipeOptions) {
-
-        super.init(frame: frame)
-        
+    init(frame: CGRect, contentView: UIView, options : SwipeOptions) {
+        contentView.frame = CGRectMake(0, 0, frame.width, frame.height)
+        contentView.contentMode = .ScaleToFill
         self.options = options
+        self.contentView = contentView
         
+        super.init(frame: frame)
+
         self.setupView()
         self.setupSwipe()
     }
@@ -33,6 +37,8 @@ class SwipeView: UIView {
         self.layer.borderWidth = 0.5
         self.layer.borderColor = UIColor.grayColor().CGColor
         self.clipsToBounds = true
+        
+        self.addSubview(self.contentView)
     }
     
     func setupSwipe() {
@@ -58,6 +64,7 @@ class SwipeView: UIView {
             let translation : CGPoint = panGestureRecognizer.translationInView(view)
             view.center = self.viewState.originalCenter + translation
             self.rotateForTranslation(translation, withRotationDirection: self.viewState.rotationDirection)
+            self.executeOnPanForTranslation(translation)
         }
     }
     
