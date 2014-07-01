@@ -1,6 +1,6 @@
 //
 //  SwipeView.swift
-//  Tinder
+//  PileView
 //
 //  Created by Jeff Barg on 6/16/14.
 //  Copyright (c) 2014 Fructose Tech. All rights reserved.
@@ -32,7 +32,7 @@ class SwipeView: UIView {
     }
 
     func setupView() {
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.clearColor()
         self.layer.cornerRadius = 5
         self.layer.borderWidth = 0.5
         self.layer.borderColor = UIColor.grayColor().CGColor
@@ -69,7 +69,7 @@ class SwipeView: UIView {
     }
     
     func rotateForTranslation(translation : CGPoint, withRotationDirection rotationDirection : RotationDirection) {
-        var rotation :CGFloat = (translation.x/100 * self.options.rotationFactor).toRadians
+        var rotation :CGFloat = (translation.x/self.options.threshold * self.options.rotationFactor).toRadians
         
         switch (rotationDirection) {
         case .RotationAwayFromCenter:
@@ -85,7 +85,7 @@ class SwipeView: UIView {
         let direction = self.directionOfExceededThreshold();
         
         switch (direction) {
-        case .Left, .Right:
+        case .Left, .Right, .Up, .Down:
             let translation = self.center - self.viewState.originalCenter;
             self.exitSuperviewFromTranslation(translation)
         case .None:
@@ -95,7 +95,13 @@ class SwipeView: UIView {
     }
     
     func executeOnPanForTranslation(translation : CGPoint) {
-        let thresholdRatio : CGFloat = min(1, fabsf(translation.x)/self.options.threshold);
+        let thresholdRatio : CGFloat = min(
+            1,
+            sqrtf(
+                powf(translation.x, 2) +
+                powf(translation.y, 2)
+            ) / self.options.threshold * 1.414
+        )
 
         var direction = SwipeDirection.None
         if (translation.x > 0) {
@@ -139,12 +145,28 @@ class SwipeView: UIView {
 
         
     func directionOfExceededThreshold() -> SwipeDirection {
-        if (self.center.x > (self.viewState.originalCenter.x + self.options.threshold)) {
-            return .Right
-        } else if (self.center.x < (self.viewState.originalCenter.x - self.options.threshold)) {
+        let translation = self.viewState.originalCenter - self.center
+        let threshold = self.options.threshold
+        
+        switch (translation.x, translation.y) {
+        case let (x, y) where x < -threshold && abs(y) < threshold:
             return .Left
-        } else {
+        case let (x, y) where y < -threshold && abs(x) < threshold:
+            return .Down
+        case let (x, y) where x > threshold && abs(y) < threshold:
+            return .Right
+        case let (x, y) where y > threshold && abs(x) < threshold:
+            return .Up
+        default:
             return .None
         }
+
+//        if (self.center.x > (self.viewState.originalCenter.x + self.options.threshold)) {
+//            return .Right
+//        } else if (self.center.x < (self.viewState.originalCenter.x - self.options.threshold)) {
+//            return .Left
+//        } else {
+//            return .None
+//        }
     }
 }

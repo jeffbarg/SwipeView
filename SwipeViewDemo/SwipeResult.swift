@@ -1,6 +1,6 @@
 //
 //  SwipeResult.swift
-//  Tinder
+//  PileView
 //
 //  Created by Jeff Barg on 6/16/14.
 //  Copyright (c) 2014 Fructose Tech. All rights reserved.
@@ -12,6 +12,8 @@ enum SwipeDirection {
     case None
     case Left
     case Right
+    case Up
+    case Down
 }
 
 class SwipeResult: NSObject {

@@ -11,9 +11,6 @@ import MapKit
 
 class ViewController: UIViewController {
     
-    let locationManager = CLLocationManager()
-    var mapView : MKMapView?
-    
     var people : Person[] = [
         Person(name: "Finn", image: UIImage(named: "finn")),
         Person(name: "Jake", image: UIImage(named: "jake")),
@@ -51,7 +48,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         
         let pileView = PileView(frame: self.frontCardViewFrame())
         pileView.popCardViewWithFrame = self.popCardViewWithFrame
@@ -60,7 +56,7 @@ class ViewController: UIViewController {
         
         self.view.addSubview(pileView)
         
-        self.view.backgroundColor = UIColor.darkGrayColor()
+        self.view.backgroundColor = UIColor.whiteColor()
     }
     
     func popCardViewWithFrame(frame : CGRect) -> UIView? {
@@ -90,8 +86,8 @@ class ViewController: UIViewController {
     
     func frontCardViewFrame () -> CGRect {
         let horizontalPadding : CGFloat = 15
-        let topPadding : CGFloat = 260
-        let bottomPadding : CGFloat = -20
+        let topPadding : CGFloat = 120
+        let bottomPadding : CGFloat = 120
         
         return CGRectMake(horizontalPadding,
             topPadding,

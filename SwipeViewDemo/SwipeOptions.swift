@@ -1,6 +1,6 @@
 //
 //  SwipeOptions.swift
-//  Tinder
+//  PileView
 //
 //  Created by Jeff Barg on 6/16/14.
 //  Copyright (c) 2014 Fructose Tech. All rights reserved.
@@ -22,10 +22,10 @@ class SwipeOptions {
     var onChosen : (SwipeResult -> ())
     
     init()  {
-        swipeCancelledAnimationDuration = 0.2;
-        swipeCancelledAnimationOptions = UIViewAnimationOptions.CurveEaseOut;
+        swipeCancelledAnimationDuration = 0.2
+        swipeCancelledAnimationOptions = UIViewAnimationOptions.CurveEaseOut
         
-        swipeAnimationDuration = 0.1;
+        swipeAnimationDuration = 0.15;
         swipeAnimationOptions = UIViewAnimationOptions.CurveEaseIn;
         
         rotationFactor = 3.0;
@@ -34,7 +34,7 @@ class SwipeOptions {
         
         onPan = { _ -> () in }
         onChosen = { (result : SwipeResult) -> () in
-            let duration = 0.1
+            let duration = 0.15
             let options = UIViewAnimationOptions.CurveEaseInOut
             
             var viewRect = result.view!.frame
