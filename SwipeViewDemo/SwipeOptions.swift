@@ -38,7 +38,7 @@ class SwipeOptions {
             let options = UIViewAnimationOptions.CurveEaseInOut
             
             var viewRect = result.view!.frame
-            var superviewRect = result.view!.superview.frame
+            var superviewRect = result.view!.superview!.frame
             var translation = result.translation
             
             let destination = viewRect.extendOutOfBounds(superviewRect, translationVector: translation)

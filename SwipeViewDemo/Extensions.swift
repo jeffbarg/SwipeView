@@ -23,14 +23,14 @@ extension CGFloat {
     var toRadians : CGFloat { return self * 3.14159265 / 180.0 }
 }
 
-@infix func + (left : CGRect, right : CGPoint) -> CGRect {
+func + (left : CGRect, right : CGPoint) -> CGRect {
     return CGRectOffset(left, right.x, right.y)
 }
 
-@infix func + (left : CGPoint, right : CGPoint) -> CGPoint {
+func + (left : CGPoint, right : CGPoint) -> CGPoint {
     return CGPointMake(left.x + right.x, left.y + right.y)
 }
 
-@infix func - (left : CGPoint, right : CGPoint) -> CGPoint {
+func - (left : CGPoint, right : CGPoint) -> CGPoint {
     return CGPointMake(left.x - right.x, left.y - right.y)
 }
