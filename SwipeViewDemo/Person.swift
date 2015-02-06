@@ -10,9 +10,9 @@ import UIKit
 
 class Person {
     var name : String
-    var image : UIImage
+    var image : UIImage?
     
-    init(name: String, image: UIImage) {
+    init(name: String, image: UIImage?) {
         self.name = name
         self.image = image
     }

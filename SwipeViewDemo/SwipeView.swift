@@ -31,6 +31,10 @@ class SwipeView: UIView {
         self.setupSwipe()
     }
 
+    required init(coder aDecoder: NSCoder) {
+        fatalError("This class does not support NSCoding")
+    }
+
     func setupView() {
         self.backgroundColor = UIColor.clearColor()
         self.layer.cornerRadius = 5
@@ -53,7 +57,7 @@ class SwipeView: UIView {
         
         switch (panGestureRecognizer.state) {
         case UIGestureRecognizerState.Began:
-            if (panGestureRecognizer.locationInView(view).y < view.center.y) {
+            if (panGestureRecognizer.locationInView(view).y < view!.center.y) {
                 self.viewState.rotationDirection = .RotationAwayFromCenter
             } else {
                 self.viewState.rotationDirection = .RotationTowardsCenter
@@ -61,8 +65,8 @@ class SwipeView: UIView {
         case UIGestureRecognizerState.Ended:
             self.finalizePosition()
         default:
-            let translation : CGPoint = panGestureRecognizer.translationInView(view)
-            view.center = self.viewState.originalCenter + translation
+            let translation : CGPoint = panGestureRecognizer.translationInView(view!)
+            view!.center = self.viewState.originalCenter + translation
             self.rotateForTranslation(translation, withRotationDirection: self.viewState.rotationDirection)
             self.executeOnPanForTranslation(translation)
         }
@@ -97,10 +101,10 @@ class SwipeView: UIView {
     func executeOnPanForTranslation(translation : CGPoint) {
         let thresholdRatio : CGFloat = min(
             1,
-            sqrtf(
-                powf(translation.x, 2) +
-                powf(translation.y, 2)
-            ) / self.options.threshold * 1.414
+            sqrt(
+                pow(translation.x, 2) +
+                pow(translation.y, 2)
+            ) / (self.options.threshold * 1.414)
         )
 
         var direction = SwipeDirection.None

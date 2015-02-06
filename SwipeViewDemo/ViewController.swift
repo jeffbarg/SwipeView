@@ -11,7 +11,7 @@ import MapKit
 
 class ViewController: UIViewController {
     
-    var people : Person[] = [
+    var people : [Person] = [
         Person(name: "Finn", image: UIImage(named: "finn")),
         Person(name: "Jake", image: UIImage(named: "jake")),
         Person(name: "Fiona", image: UIImage(named: "fiona")),
@@ -38,11 +38,11 @@ class ViewController: UIViewController {
         Person(name: "Prince", image: UIImage(named: "prince")),
     ]
     
-    init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
     }
     
-    init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
