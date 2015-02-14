@@ -22,7 +22,7 @@ class SwipeResult: NSObject {
     var direction : SwipeDirection
     var onCompletion : () -> ()
     
-    init() {
+    override init() {
         translation = CGPoint(x: 0, y: 0)
         direction = SwipeDirection.None
         onCompletion = {}

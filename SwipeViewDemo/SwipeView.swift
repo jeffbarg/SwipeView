@@ -31,6 +31,10 @@ class SwipeView: UIView {
         self.setupSwipe()
     }
 
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     func setupView() {
         self.backgroundColor = UIColor.clearColor()
         self.layer.cornerRadius = 5
@@ -50,10 +54,10 @@ class SwipeView: UIView {
     
     func onSwipe(panGestureRecognizer : UIPanGestureRecognizer!) {
         let view = panGestureRecognizer.view
-        
+
         switch (panGestureRecognizer.state) {
         case UIGestureRecognizerState.Began:
-            if (panGestureRecognizer.locationInView(view).y < view.center.y) {
+            if (panGestureRecognizer.locationInView(view).y < view?.center.y) {
                 self.viewState.rotationDirection = .RotationAwayFromCenter
             } else {
                 self.viewState.rotationDirection = .RotationTowardsCenter
@@ -61,8 +65,8 @@ class SwipeView: UIView {
         case UIGestureRecognizerState.Ended:
             self.finalizePosition()
         default:
-            let translation : CGPoint = panGestureRecognizer.translationInView(view)
-            view.center = self.viewState.originalCenter + translation
+            let translation : CGPoint = panGestureRecognizer.translationInView(view!)
+            view?.center = self.viewState.originalCenter + translation
             self.rotateForTranslation(translation, withRotationDirection: self.viewState.rotationDirection)
             self.executeOnPanForTranslation(translation)
         }
@@ -92,16 +96,21 @@ class SwipeView: UIView {
             self.returnToOriginalCenter()
             self.executeOnPanForTranslation(CGPointZero)
         }
+        CGFloat()
     }
-    
     func executeOnPanForTranslation(translation : CGPoint) {
-        let thresholdRatio : CGFloat = min(
-            1,
-            sqrtf(
-                powf(translation.x, 2) +
-                powf(translation.y, 2)
-            ) / self.options.threshold * 1.414
-        )
+        min(1.0, 10)
+        
+        var sqr : Float = sqrtf(
+            powf(Float(translation.x), 2) +
+                powf(Float(translation.y), 2)
+            )
+        var thresh : Float = Float(self.options.threshold) * 1.414
+        
+        var minY : Float = sqr / thresh
+
+        
+        let thresholdRatio : CGFloat = CGFloat(min(1.0, minY))
 
         var direction = SwipeDirection.None
         if (translation.x > 0) {
