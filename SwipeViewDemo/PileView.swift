@@ -11,12 +11,16 @@ import UIKit
 class PileView : UIView {
     
     var popCardViewWithFrame : ((CGRect) -> UIView?)?
-    var swipeViews : SwipeView[] = []
+    var swipeViews : [SwipeView] = []
     
     let transformRatio : CGFloat = 0.96
     
-    init(frame: CGRect)  {
+    override init(frame: CGRect)  {
         super.init(frame: frame)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func reloadContent() {
@@ -24,7 +28,7 @@ class PileView : UIView {
             return
         }
         
-        for position in self.swipeViews.count..4 {
+        for position in self.swipeViews.count...4 {
             let frame = CGRectMake(0, 0, self.frame.width, self.frame.height)
             
             if let view = self.popCardViewWithFrame?(frame) {
@@ -101,7 +105,7 @@ class PileView : UIView {
     func optionsForView(view : UIView) -> SwipeOptions {
         var options = SwipeOptions()
         options.onPan = {(panState : PanState) -> () in
-            for i in 1..self.swipeViews.count {
+            for i in 1...self.swipeViews.count {
                 let swipeView = self.swipeViews[i]
                 let ratio = panState.thresholdRatio
                 let position = CGFloat(i) - ratio
