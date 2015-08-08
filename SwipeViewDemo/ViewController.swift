@@ -11,40 +11,33 @@ import MapKit
 
 class ViewController: UIViewController {
     
-    var people : Person[] = [
-        Person(name: "Finn", image: UIImage(named: "finn")),
-        Person(name: "Jake", image: UIImage(named: "jake")),
-        Person(name: "Fiona", image: UIImage(named: "fiona")),
-        Person(name: "Prince", image: UIImage(named: "prince")),
-        Person(name: "Finn", image: UIImage(named: "finn")),
-        Person(name: "Jake", image: UIImage(named: "jake")),
-        Person(name: "Fiona", image: UIImage(named: "fiona")),
-        Person(name: "Prince", image: UIImage(named: "prince")),
-        Person(name: "Finn", image: UIImage(named: "finn")),
-        Person(name: "Jake", image: UIImage(named: "jake")),
-        Person(name: "Fiona", image: UIImage(named: "fiona")),
-        Person(name: "Prince", image: UIImage(named: "prince")),
-        Person(name: "Finn", image: UIImage(named: "finn")),
-        Person(name: "Jake", image: UIImage(named: "jake")),
-        Person(name: "Fiona", image: UIImage(named: "fiona")),
-        Person(name: "Prince", image: UIImage(named: "prince")),
-        Person(name: "Finn", image: UIImage(named: "finn")),
-        Person(name: "Jake", image: UIImage(named: "jake")),
-        Person(name: "Fiona", image: UIImage(named: "fiona")),
-        Person(name: "Prince", image: UIImage(named: "prince")),
-        Person(name: "Finn", image: UIImage(named: "finn")),
-        Person(name: "Jake", image: UIImage(named: "jake")),
-        Person(name: "Fiona", image: UIImage(named: "fiona")),
-        Person(name: "Prince", image: UIImage(named: "prince")),
+    var people : [Person] = [
+        Person(name: "Finn", image: UIImage(named: "finn")!),
+        Person(name: "Jake", image: UIImage(named: "jake")!),
+        Person(name: "Fiona", image: UIImage(named: "fiona")!),
+        Person(name: "Prince", image: UIImage(named: "prince")!),
+        Person(name: "Finn", image: UIImage(named: "finn")!),
+        Person(name: "Jake", image: UIImage(named: "jake")!),
+        Person(name: "Fiona", image: UIImage(named: "fiona")!),
+        Person(name: "Prince", image: UIImage(named: "prince")!),
+        Person(name: "Finn", image: UIImage(named: "finn")!),
+        Person(name: "Jake", image: UIImage(named: "jake")!),
+        Person(name: "Fiona", image: UIImage(named: "fiona")!),
+        Person(name: "Prince", image: UIImage(named: "prince")!),
+        Person(name: "Finn", image: UIImage(named: "finn")!),
+        Person(name: "Jake", image: UIImage(named: "jake")!),
+        Person(name: "Fiona", image: UIImage(named: "fiona")!),
+        Person(name: "Prince", image: UIImage(named: "prince")!),
+        Person(name: "Finn", image: UIImage(named: "finn")!),
+        Person(name: "Jake", image: UIImage(named: "jake")!),
+        Person(name: "Fiona", image: UIImage(named: "fiona")!),
+        Person(name: "Prince", image: UIImage(named: "prince")!),
+        Person(name: "Finn", image: UIImage(named: "finn")!),
+        Person(name: "Jake", image: UIImage(named: "jake")!),
+        Person(name: "Fiona", image: UIImage(named: "fiona")!),
+        Person(name: "Prince", image: UIImage(named: "prince")!),
     ]
-    
-    init(coder aDecoder: NSCoder!) {
-        super.init(coder: aDecoder)
-    }
-    
-    init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +59,7 @@ class ViewController: UIViewController {
         
         let p : Person = people.removeLast()
         
-        var imageView = UIImageView()
+        let imageView = UIImageView()
         
         imageView.image = p.image
         imageView.contentMode = UIViewContentMode.ScaleAspectFill

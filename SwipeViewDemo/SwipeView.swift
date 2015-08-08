@@ -31,6 +31,10 @@ class SwipeView: UIView {
         self.setupSwipe()
     }
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     func setupView() {
         self.backgroundColor = UIColor.clearColor()
         self.layer.cornerRadius = 5
@@ -49,7 +53,7 @@ class SwipeView: UIView {
     }
     
     func onSwipe(panGestureRecognizer : UIPanGestureRecognizer!) {
-        let view = panGestureRecognizer.view
+        let view = panGestureRecognizer.view!
         
         switch (panGestureRecognizer.state) {
         case UIGestureRecognizerState.Began:
@@ -97,9 +101,9 @@ class SwipeView: UIView {
     func executeOnPanForTranslation(translation : CGPoint) {
         let thresholdRatio : CGFloat = min(
             1,
-            sqrtf(
-                powf(translation.x, 2) +
-                powf(translation.y, 2)
+            sqrt(
+                pow(translation.x, 2) +
+                pow(translation.y, 2)
             ) / self.options.threshold * 1.414
         )
 
@@ -110,7 +114,7 @@ class SwipeView: UIView {
             direction = .Left
         }
         
-        var state = PanState(direction: direction, view: self, thresholdRatio: thresholdRatio)
+        let state = PanState(direction: direction, view: self, thresholdRatio: thresholdRatio)
         self.options.onPan(state)
     }
     
@@ -131,7 +135,7 @@ class SwipeView: UIView {
     func exitSuperviewFromTranslation(translation : CGPoint) {
         let direction = self.directionOfExceededThreshold()
         
-        var result = SwipeResult()
+        let result = SwipeResult()
         result.view = self
         result.translation = translation
         result.direction = direction

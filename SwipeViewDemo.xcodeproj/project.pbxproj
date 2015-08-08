@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3208A3B41B76769800E0B7A3 /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3208A3B31B76769800E0B7A3 /* SwipeDirection.swift */; };
+		326A29CB1B768DC400F11667 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 326A29CA1B768DC400F11667 /* Launch Screen.storyboard */; };
 		328B664D1950F57500D11E0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B664C1950F57500D11E0E /* AppDelegate.swift */; };
 		328B664F1950F57500D11E0E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 328B664E1950F57500D11E0E /* Images.xcassets */; };
 		328B665B1950F57500D11E0E /* SwipeViewDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B665A1950F57500D11E0E /* SwipeViewDemoTests.swift */; };
@@ -33,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3208A3B31B76769800E0B7A3 /* SwipeDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeDirection.swift; sourceTree = "<group>"; };
+		326A29CA1B768DC400F11667 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
 		328B66471950F57500D11E0E /* SwipeViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		328B664B1950F57500D11E0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		328B664C1950F57500D11E0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 				328B66771950F61400D11E0E /* Person.swift */,
 				328B66751950F5AE00D11E0E /* ViewController.swift */,
 				328B664C1950F57500D11E0E /* AppDelegate.swift */,
+				326A29CA1B768DC400F11667 /* Launch Screen.storyboard */,
 				328B664E1950F57500D11E0E /* Images.xcassets */,
 				328B664A1950F57500D11E0E /* Supporting Files */,
 			);
@@ -133,6 +138,7 @@
 				328B66661950F59A00D11E0E /* SwipeOptions.swift */,
 				328B66671950F59A00D11E0E /* PanState.swift */,
 				328B66681950F59A00D11E0E /* SwipeResult.swift */,
+				3208A3B31B76769800E0B7A3 /* SwipeDirection.swift */,
 				328B66691950F59A00D11E0E /* Extensions.swift */,
 				328B666A1950F59A00D11E0E /* SwipeViewState.swift */,
 				328B666B1950F59A00D11E0E /* SwipeViewDelegate.swift */,
@@ -185,7 +191,9 @@
 		328B663F1950F57500D11E0E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Fructose Tech";
 				TargetAttributes = {
 					328B66461950F57500D11E0E = {
@@ -220,6 +228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				326A29CB1B768DC400F11667 /* Launch Screen.storyboard in Resources */,
 				328B664F1950F57500D11E0E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3208A3B41B76769800E0B7A3 /* SwipeDirection.swift in Sources */,
 				328B66761950F5AE00D11E0E /* ViewController.swift in Sources */,
 				328B66721950F59A00D11E0E /* SwipeViewDelegate.swift in Sources */,
 				328B667A1951046C00D11E0E /* PileView.swift in Sources */,
@@ -291,6 +301,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -354,8 +365,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = SwipeViewDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "fructosetech.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -365,8 +379,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = SwipeViewDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "fructosetech.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -385,6 +402,7 @@
 				INFOPLIST_FILE = SwipeViewDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "fructosetech.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -401,6 +419,7 @@
 				INFOPLIST_FILE = SwipeViewDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "fructosetech.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
