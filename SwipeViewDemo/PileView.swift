@@ -102,7 +102,7 @@ class PileView : UIView {
     func optionsForView(view : UIView) -> SwipeOptions {
         let options = SwipeOptions()
         options.onPan = {(panState : PanState) -> () in
-            for i in 1...self.swipeViews.count - 1 {
+            for i in 1 ..< self.swipeViews.count {
                 let swipeView = self.swipeViews[i]
                 let ratio = panState.thresholdRatio
                 let position = CGFloat(i) - ratio
