@@ -9,9 +9,9 @@
 import UIKit
 
 extension CGRect {
-    func extendOutOfBounds(bounds : CGRect, translationVector : CGPoint) -> CGRect {
+    func extendOutOfBounds(_ bounds : CGRect, translationVector : CGPoint) -> CGRect {
         var result = self;
-        while (!CGRectIsNull(CGRectIntersection(result, bounds))) {
+        while (!result.intersection(bounds).isNull) {
             result = result + translationVector
         }
         
@@ -24,13 +24,13 @@ extension CGFloat {
 }
 
 func + (left : CGRect, right : CGPoint) -> CGRect {
-    return CGRectOffset(left, right.x, right.y)
+    return left.offsetBy(dx: right.x, dy: right.y)
 }
 
 func + (left : CGPoint, right : CGPoint) -> CGPoint {
-    return CGPointMake(left.x + right.x, left.y + right.y)
+    return CGPoint(x: left.x + right.x, y: left.y + right.y)
 }
 
 func - (left : CGPoint, right : CGPoint) -> CGPoint {
-    return CGPointMake(left.x - right.x, left.y - right.y)
+    return CGPoint(x: left.x - right.x, y: left.y - right.y)
 }

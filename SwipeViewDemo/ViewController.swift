@@ -49,10 +49,10 @@ class ViewController: UIViewController {
         
         self.view.addSubview(pileView)
         
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
     }
     
-    func popCardViewWithFrame(frame : CGRect) -> UIView? {
+    func popCardViewWithFrame(_ frame : CGRect) -> UIView? {
         if (people.count == 0) {
             return nil
         }
@@ -62,17 +62,17 @@ class ViewController: UIViewController {
         let imageView = UIImageView()
         
         imageView.image = p.image
-        imageView.contentMode = UIViewContentMode.ScaleAspectFill
+        imageView.contentMode = UIViewContentMode.scaleAspectFill
         imageView.clipsToBounds = true
             
         return imageView
     }
     
-    func tappedImageView(sender : AnyObject) -> () {
+    func tappedImageView(_ sender : AnyObject) -> () {
         if let imageView = sender as? UIView {
-            UIView.animateWithDuration(0.5, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 imageView.alpha = 0
-                imageView.transform = CGAffineTransformMakeScale(0.01, 0.01)
+                imageView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
             })
         }
     }
@@ -82,13 +82,13 @@ class ViewController: UIViewController {
         let topPadding : CGFloat = 120
         let bottomPadding : CGFloat = 120
         
-        return CGRectMake(horizontalPadding,
-            topPadding,
-            CGRectGetWidth(self.view.frame) - (horizontalPadding * 2),
-            CGRectGetHeight(self.view.frame) - (bottomPadding) - (topPadding))
+        return CGRect(x: horizontalPadding,
+            y: topPadding,
+            width: self.view.frame.width - (horizontalPadding * 2),
+            height: self.view.frame.height - (bottomPadding) - (topPadding))
     }
     
-    override func viewDidAppear(animated: Bool)  {
+    override func viewDidAppear(_ animated: Bool)  {
     }
     
     override func didReceiveMemoryWarning() {

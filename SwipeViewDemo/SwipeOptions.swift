@@ -18,15 +18,15 @@ class SwipeOptions {
     
     var rotationFactor : CGFloat
     
-    var onPan : (PanState -> ())
-    var onChosen : (SwipeResult -> ())
+    var onPan : ((PanState) -> ())
+    var onChosen : ((SwipeResult) -> ())
     
     init()  {
         swipeCancelledAnimationDuration = 0.2
-        swipeCancelledAnimationOptions = UIViewAnimationOptions.CurveEaseOut
+        swipeCancelledAnimationOptions = UIViewAnimationOptions.curveEaseOut
         
         swipeAnimationDuration = 0.15;
-        swipeAnimationOptions = UIViewAnimationOptions.CurveEaseIn;
+        swipeAnimationOptions = UIViewAnimationOptions.curveEaseIn;
         
         rotationFactor = 3.0;
         
@@ -35,7 +35,7 @@ class SwipeOptions {
         onPan = { _ -> () in }
         onChosen = { (result : SwipeResult) -> () in
             let duration = 0.15
-            let options = UIViewAnimationOptions.CurveEaseInOut
+            let options = UIViewAnimationOptions()
             
             let viewRect = result.view!.frame
             let superviewRect = result.view!.superview!.frame
@@ -43,7 +43,7 @@ class SwipeOptions {
             
             let destination = viewRect.extendOutOfBounds(superviewRect, translationVector: translation)
             
-            UIView.animateWithDuration(duration, delay: 0.0, options: options, animations: {
+            UIView.animate(withDuration: duration, delay: 0.0, options: options, animations: {
                 result.view!.frame = destination;
             }, completion: {(finished : Bool) -> () in
                 if (finished) {

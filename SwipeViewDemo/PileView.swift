@@ -29,7 +29,7 @@ class PileView : UIView {
         }
         
         for position in self.swipeViews.count...3 {
-            let frame = CGRectMake(0, 0, self.frame.width, self.frame.height)
+            let frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
             
             if let view = self.popCardViewWithFrame?(frame) {
                 //Wrap view in a SwipeView
@@ -37,14 +37,14 @@ class PileView : UIView {
                 
                 let swipeView = SwipeView(frame: frame, contentView: view, options: options)
                 swipeView.viewWasChosenWithDirection = {(view : UIView, direction : SwipeDirection) -> () in
-                        if (direction == .None) {
+                        if (direction == .none) {
                             //Forward to delegate
                             return
                         }
                         
                         let view = self.swipeViews[0]
                         view.removeFromSuperview()
-                        self.swipeViews.removeAtIndex(0)
+                        self.swipeViews.remove(at: 0)
                     
                         //Forward to delegate
 
@@ -54,7 +54,7 @@ class PileView : UIView {
                 //Animate insertion
                 self.animateCardInsertion(swipeView, atPosition: CGFloat(position))
                 
-                self.insertSubview(swipeView, atIndex: 0)
+                self.insertSubview(swipeView, at: 0)
                 self.swipeViews.append(swipeView)
 
             } else {
@@ -63,43 +63,43 @@ class PileView : UIView {
         }
     }
     
-    func animateCardInsertion(swipeView : SwipeView, atPosition position : CGFloat) {
+    func animateCardInsertion(_ swipeView : SwipeView, atPosition position : CGFloat) {
         let transform = self.transformForPosition(position)
         let frame = swipeView.frame
         
         let verticalOffset : CGFloat = -50
-        swipeView.frame = CGRectOffset(frame, 0, verticalOffset)
+        swipeView.frame = frame.offsetBy(dx: 0, dy: verticalOffset)
         swipeView.alpha = 0
-        swipeView.opaque = false
+        swipeView.isOpaque = false
         
-        let animationOptions = UIViewAnimationOptions.CurveEaseOut
-        let duration : NSTimeInterval = 0.3
-        let delay : NSTimeInterval = duration * Double(4 - position) / Double(1.5)
-        UIView.animateWithDuration(duration, delay: delay, options: animationOptions, animations: {
+        let animationOptions = UIViewAnimationOptions.curveEaseOut
+        let duration : TimeInterval = 0.3
+        let delay : TimeInterval = duration * Double(4 - position) / Double(1.5)
+        UIView.animate(withDuration: duration, delay: delay, options: animationOptions, animations: {
             swipeView.frame = frame
             swipeView.transform = transform
             swipeView.alpha = 1
             
             }, completion: {(finished : Bool) -> () in
                 if (finished) {
-                    swipeView.opaque = true
+                    swipeView.isOpaque = true
                 }
             })
     }
-    func transformForPosition(position : CGFloat) -> CGAffineTransform {
-        var transform : CGAffineTransform = CGAffineTransformIdentity
+    func transformForPosition(_ position : CGFloat) -> CGAffineTransform {
+        var transform : CGAffineTransform = CGAffineTransform.identity
         
         if (self.swipeViews.count > 0) { //Keep transform at identity if first view
             let scale = pow(transformRatio, position)
-            transform = CGAffineTransformMakeScale(scale, scale)
+            transform = CGAffineTransform(scaleX: scale, y: scale)
             
-            transform = CGAffineTransformTranslate(transform, 0, -15 * position)
+            transform = transform.translatedBy(x: 0, y: -15 * position)
         }
         
         return transform
     }
     
-    func optionsForView(view : UIView) -> SwipeOptions {
+    func optionsForView(_ view : UIView) -> SwipeOptions {
         let options = SwipeOptions()
         options.onPan = {(panState : PanState) -> () in
             for i in 1 ..< self.swipeViews.count {

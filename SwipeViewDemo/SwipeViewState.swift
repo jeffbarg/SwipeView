@@ -9,8 +9,8 @@
 import UIKit
 
 enum RotationDirection {
-    case RotationTowardsCenter
-    case RotationAwayFromCenter
+    case rotationTowardsCenter
+    case rotationAwayFromCenter
 }
 
 class SwipeViewState {
@@ -26,7 +26,7 @@ class SwipeViewState {
     var rotationDirection : RotationDirection;
     
     init() {
-        self.originalCenter = CGPointMake(0, 0)
-        self.rotationDirection = .RotationTowardsCenter
+        self.originalCenter = CGPoint(x: 0, y: 0)
+        self.rotationDirection = .rotationTowardsCenter
     }
 }

@@ -20,8 +20,8 @@ class SwipeView: UIView {
     var viewWasChosenWithDirection : ((UIView, SwipeDirection) -> ())?
     
     init(frame: CGRect, contentView: UIView, options : SwipeOptions) {
-        contentView.frame = CGRectMake(0, 0, frame.width, frame.height)
-        contentView.contentMode = .ScaleToFill
+        contentView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+        contentView.contentMode = .scaleToFill
         self.options = options
         self.contentView = contentView
         
@@ -36,10 +36,10 @@ class SwipeView: UIView {
     }
 
     func setupView() {
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         self.layer.cornerRadius = 5
         self.layer.borderWidth = 0.5
-        self.layer.borderColor = UIColor.grayColor().CGColor
+        self.layer.borderColor = UIColor.gray.cgColor
         self.clipsToBounds = true
         
         self.addSubview(self.contentView)
@@ -48,57 +48,57 @@ class SwipeView: UIView {
     func setupSwipe() {
         self.viewState.originalCenter = self.center
         
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: Selector("onSwipe:"))
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(SwipeView.onSwipe(_:)))
         self.addGestureRecognizer(panGestureRecognizer)
     }
     
-    func onSwipe(panGestureRecognizer : UIPanGestureRecognizer!) {
+    func onSwipe(_ panGestureRecognizer : UIPanGestureRecognizer!) {
         let view = panGestureRecognizer.view!
         
         switch (panGestureRecognizer.state) {
-        case UIGestureRecognizerState.Began:
-            if (panGestureRecognizer.locationInView(view).y < view.center.y) {
-                self.viewState.rotationDirection = .RotationAwayFromCenter
+        case UIGestureRecognizerState.began:
+            if (panGestureRecognizer.location(in: view).y < view.center.y) {
+                self.viewState.rotationDirection = .rotationAwayFromCenter
             } else {
-                self.viewState.rotationDirection = .RotationTowardsCenter
+                self.viewState.rotationDirection = .rotationTowardsCenter
             }
-        case UIGestureRecognizerState.Ended:
+        case UIGestureRecognizerState.ended:
             self.finalizePosition()
         default:
-            let translation : CGPoint = panGestureRecognizer.translationInView(view)
+            let translation : CGPoint = panGestureRecognizer.translation(in: view)
             view.center = self.viewState.originalCenter + translation
             self.rotateForTranslation(translation, withRotationDirection: self.viewState.rotationDirection)
             self.executeOnPanForTranslation(translation)
         }
     }
     
-    func rotateForTranslation(translation : CGPoint, withRotationDirection rotationDirection : RotationDirection) {
+    func rotateForTranslation(_ translation : CGPoint, withRotationDirection rotationDirection : RotationDirection) {
         var rotation :CGFloat = (translation.x/self.options.threshold * self.options.rotationFactor).toRadians
         
         switch (rotationDirection) {
-        case .RotationAwayFromCenter:
+        case .rotationAwayFromCenter:
             rotation *= 1
-        case .RotationTowardsCenter:
+        case .rotationTowardsCenter:
             rotation *= -1
         }
         
-        self.transform = CGAffineTransformRotate(CGAffineTransformIdentity, rotation);
+        self.transform = CGAffineTransform.identity.rotated(by: rotation);
     }
     
     func finalizePosition() {
         let direction = self.directionOfExceededThreshold();
         
         switch (direction) {
-        case .Left, .Right, .Up, .Down:
+        case .left, .right, .up, .down:
             let translation = self.center - self.viewState.originalCenter;
             self.exitSuperviewFromTranslation(translation)
-        case .None:
+        case .none:
             self.returnToOriginalCenter()
-            self.executeOnPanForTranslation(CGPointZero)
+            self.executeOnPanForTranslation(CGPoint.zero)
         }
     }
     
-    func executeOnPanForTranslation(translation : CGPoint) {
+    func executeOnPanForTranslation(_ translation : CGPoint) {
         let thresholdRatio : CGFloat = min(
             1,
             sqrt(
@@ -107,11 +107,11 @@ class SwipeView: UIView {
             ) / self.options.threshold * 1.414
         )
 
-        var direction = SwipeDirection.None
+        var direction = SwipeDirection.none
         if (translation.x > 0) {
-            direction = .Right
+            direction = .right
         } else if (translation.x < 0) {
-            direction = .Left
+            direction = .left
         }
         
         let state = PanState(direction: direction, view: self, thresholdRatio: thresholdRatio)
@@ -119,11 +119,11 @@ class SwipeView: UIView {
     }
     
     func returnToOriginalCenter() {
-        UIView.animateWithDuration(self.options.swipeCancelledAnimationDuration,
+        UIView.animate(withDuration: self.options.swipeCancelledAnimationDuration,
             delay: 0.0,
             options: self.options.swipeCancelledAnimationOptions,
             animations: {
-                self.transform = CGAffineTransformIdentity;
+                self.transform = CGAffineTransform.identity;
                 self.center = self.viewState.originalCenter;
             }, completion: {(finished : Bool) -> () in
                 if (finished) {
@@ -132,7 +132,7 @@ class SwipeView: UIView {
             })
     }
 
-    func exitSuperviewFromTranslation(translation : CGPoint) {
+    func exitSuperviewFromTranslation(_ translation : CGPoint) {
         let direction = self.directionOfExceededThreshold()
         
         let result = SwipeResult()
@@ -154,15 +154,15 @@ class SwipeView: UIView {
         
         switch (translation.x, translation.y) {
         case let (x, y) where x < -threshold && abs(y) < threshold:
-            return .Left
+            return .left
         case let (x, y) where y < -threshold && abs(x) < threshold:
-            return .Down
+            return .down
         case let (x, y) where x > threshold && abs(y) < threshold:
-            return .Right
+            return .right
         case let (x, y) where y > threshold && abs(x) < threshold:
-            return .Up
+            return .up
         default:
-            return .None
+            return .none
         }
 
 //        if (self.center.x > (self.viewState.originalCenter.x + self.options.threshold)) {

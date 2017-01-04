@@ -16,7 +16,7 @@ class SwipeResult: NSObject {
     
     override init() {
         translation = CGPoint(x: 0, y: 0)
-        direction = SwipeDirection.None
+        direction = SwipeDirection.none
         onCompletion = {}
     }
 }
